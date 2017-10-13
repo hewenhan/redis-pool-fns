@@ -1,0 +1,27 @@
+{
+  "name": "redis-pool-fns",
+  "version": "1.0.0",
+  "description": "redis-pool-fns",
+  "main": "redis.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hewenhan/redis-pool-fns.git"
+  },
+  "keywords": [
+    "redis",
+    "pool",
+    "functions"
+  ],
+  "author": "Blind Holmes <hewenhan@gmail.com> (http://blog.hewenhan.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hewenhan/redis-pool-fns/issues"
+  },
+  "homepage": "https://github.com/hewenhan/redis-pool-fns#readme",
+  "dependencies": {
+    "redis-connection-pool": "^1.6.1"
+  }
+}

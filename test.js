@@ -1,6 +1,3 @@
-# redis-pool-fns
-redis-pool-fns
-```
 var config = {
 	host: '127.0.0.1',
 	port: 6379,
@@ -54,4 +51,3 @@ redis.zRange("zasd", 0, -1, function (err, reply) {
 	}
 	console.log(reply);
 }, true);
-```

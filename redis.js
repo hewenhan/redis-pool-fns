@@ -19,6 +19,7 @@ var processRedisArray = function (redisArray, startRank) {
 
 var redisInit = function (redisConfig) {
 	this.redisPool = require('redis-connection-pool')('uuvrRedis', redisConfig);
+	redisConfig.perfix = redisConfig.perfix || "";
 	var _this = this;
 	this.set = function (key, value, expireTime, callback) {
 		key = redisConfig.perfix + key;

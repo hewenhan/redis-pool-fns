@@ -18,7 +18,7 @@ var processRedisArray = function (redisArray, startRank) {
 };
 
 var redisInit = function (redisConfig) {
-	this.redisPool = require('redis-connection-pool')('uuvrRedis', redisConfig);
+	this.redisPool = require('redis-connection-pool')(redisConfig.area || "", redisConfig);
 	redisConfig.perfix = redisConfig.perfix || "";
 	var _this = this;
 	this.set = function (key, value, expireTime, callback) {
@@ -95,6 +95,10 @@ var redisInit = function (redisConfig) {
 			};
 			var result = {};
 			var getValueCount = 0;
+			if (keyName.length == 0) {
+				callback(null, result);
+				return;
+			}
 			for (var i = 0; i < keyName.length; i++) {
 				getKey(keyName[i]);				
 			}
@@ -128,6 +132,10 @@ var redisInit = function (redisConfig) {
 			};
 			var delArr = [];
 			var getValueCount = 0;
+			if (keyName.length == 0) {
+				callback(null, result);
+				return;
+			}
 			for (var i = 0; i < keyName.length; i++) {
 				deleteKey(keyName[i]);				
 			}

@@ -74,7 +74,9 @@ var redisInit = function (redisConfig) {
 		_this.redisPool.send_command(commandName, args, callback);
 	};
 	this.getPatt = function (keyPatt, callback, resultValue) {
-		resultValue = resultValue || true;
+		if (resultValue == null) {
+			resultValue = true;
+		}
 		_this.send_command('keys', [redisConfig.perfix + keyPatt], function (err, keyName) {
 			if (err) {
 				callback(err);

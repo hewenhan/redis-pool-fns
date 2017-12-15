@@ -142,7 +142,7 @@ var redisInit = function (redisConfig) {
 			var delArr = [];
 			var getValueCount = 0;
 			if (keyName.length == 0) {
-				callback(null, result);
+				callback(null, delArr);
 				return;
 			}
 			for (var i = 0; i < keyName.length; i++) {

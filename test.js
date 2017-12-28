@@ -15,7 +15,7 @@ var redis = require("./redis")(config);
 var key = "asd6";
 var value = "hello world6";
 
-redis.set(key, value, null, function (err) {
+redis.set(key, value, 12, function (err) {
 	if (err) {
 		console.log(err);
 		return;

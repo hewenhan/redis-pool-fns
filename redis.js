@@ -23,30 +23,19 @@ var redisInit = function (redisConfig) {
 	var _this = this;
 	this.set = function (key, value, expireTime, callback) {
 		key = redisConfig.perfix + key;
-		_this.redisPool.set(key, value, function (err) {
+		var options = [];
+		options.push(key);
+		options.push(value);
+		if (expireTime != null) {
+			options.push('EX');
+			options.push(expireTime);
+		}
+		_this.send_command('SET', options, function (err, reply) {
 			if (err) {
-				if (typeof callback == 'function') {
-					callback(err);
-				}
+				callback(err, reply);
 				return;
 			}
-			if (expireTime != null) {
-				_this.redisPool.expire(key, expireTime, function (err) {
-					if (err) {
-						if (typeof callback == 'function') {
-							callback(err);
-						}
-						return;
-					}
-					if (typeof callback == 'function') {
-						callback(err);
-					}
-				});
-				return;
-			}
-			if (typeof callback == 'function') {
-				callback(err);
-			}
+			callback(err, reply);
 		});
 	};
 	this.get = function (key, callback) {

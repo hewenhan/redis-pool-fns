@@ -22,6 +22,9 @@ var redisInit = function (redisConfig) {
 	redisConfig.perfix = redisConfig.perfix || "";
 	var _this = this;
 	this.set = function (key, value, expireTime, callback) {
+		if (callback == null) {
+			callback = function () {};
+		}
 		key = redisConfig.perfix + key;
 		var options = [];
 		options.push(key);

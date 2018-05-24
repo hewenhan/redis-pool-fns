@@ -51,3 +51,19 @@ redis.zRange("zasd", 0, -1, function (err, reply) {
 	}
 	console.log(reply);
 }, true);
+
+redis.hSetObj('aaa', {a:1, b:2, c:3}, function (err, reply) {
+	if (err) {
+		console.log(err);
+		return;
+	}
+	console.log(reply);
+
+	redis.hGetAll('aaa', function (err, reply) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		console.log(reply);
+	});
+});

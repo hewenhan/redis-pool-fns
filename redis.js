@@ -220,6 +220,20 @@ var redisInit = function (redisConfig) {
 		key = redisConfig.perfix + key;
 		_this.redisPool.hset(key, field, data, callback);
 	};
+	this.hSetObj = function (key, obj, callback) {
+		if (typeof callback != 'function') {
+			callback = function () {};
+		}
+		key = redisConfig.perfix + key;
+
+		var hsetArr = [];
+		hsetArr.push(key);
+		for (var i in obj) {
+			hsetArr.push(i);
+			hsetArr.push(obj[i]);
+		}
+		_this.send_command('HSET', hsetArr, callback);
+	};
 	this.hGet = function (key, field, callback) {
 		key = redisConfig.perfix + key;
 		_this.redisPool.hget(key, field, callback);

@@ -67,3 +67,13 @@ redis.hSetObj('aaa', {a:1, b:2, c:3}, function (err, reply) {
 		console.log(reply);
 	});
 });
+
+redis.hDel('aaa', 'a');
+
+redis.hGetAll('aaa', function (err, reply) {
+	if (err) {
+		console.log(err);
+		return;
+	}
+	console.log(reply);
+});

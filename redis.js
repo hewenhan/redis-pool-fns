@@ -242,6 +242,10 @@ var redisInit = function (redisConfig) {
 		key = redisConfig.perfix + key;
 		_this.redisPool.hgetall(key, callback);
 	};
+	this.hDel = function (key, fields, callback) {
+		key = redisConfig.perfix + key;
+		_this.redisPool.hdel(key, fields, callback);
+	};
 	this.zRevRank = function (key, member, callback) {
 		key = redisConfig.perfix + key;
 		_this.send_command('ZREVRANK', [key, member], callback);

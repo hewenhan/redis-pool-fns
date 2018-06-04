@@ -232,7 +232,7 @@ var redisInit = function (redisConfig) {
 			hsetArr.push(i);
 			hsetArr.push(obj[i]);
 		}
-		_this.send_command('HSET', hsetArr, callback);
+		_this.send_command('HMSET', hsetArr, callback);
 	};
 	this.hGet = function (key, field, callback) {
 		key = redisConfig.perfix + key;
